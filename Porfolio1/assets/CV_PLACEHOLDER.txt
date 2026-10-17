@@ -1,0 +1,6 @@
+Place your real CV PDF here as:
+
+  Elion_Krasniqi_CV.pdf
+
+Then delete this placeholder file.
+The portfolio Download CV buttons already link to /assets/Elion_Krasniqi_CV.pdf

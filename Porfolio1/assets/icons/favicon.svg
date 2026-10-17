@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EK">
+  <rect width="64" height="64" fill="#050607"/>
+  <rect x="4" y="4" width="56" height="56" fill="none" stroke="#3ecf8e" stroke-width="2"/>
+  <text x="32" y="40" text-anchor="middle" font-family="ui-monospace, monospace" font-size="22" font-weight="700" fill="#3ecf8e">EK</text>
+</svg>

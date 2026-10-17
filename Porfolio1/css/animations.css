@@ -1,0 +1,94 @@
+/* Motion system */
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); opacity: 1; }
+  50% { box-shadow: 0 0 0 8px transparent; opacity: 0.85; }
+}
+
+@keyframes scroll-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes scan {
+  0% { background-position: 0% -100%; }
+  100% { background-position: 0% 200%; }
+}
+
+@keyframes float-label {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.core-label {
+  animation: float-label 5s var(--ease-in-out) infinite;
+}
+.core-label--b { animation-delay: 0.8s; }
+.core-label--c { animation-delay: 1.4s; }
+.core-label--d { animation-delay: 2s; }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0) * 80ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal[data-reveal-delay="1"] { --reveal-delay: 1; }
+.reveal[data-reveal-delay="2"] { --reveal-delay: 2; }
+.reveal[data-reveal-delay="3"] { --reveal-delay: 3; }
+.reveal[data-reveal-delay="4"] { --reveal-delay: 4; }
+.reveal[data-reveal-delay="5"] { --reveal-delay: 5; }
+.reveal[data-reveal-delay="6"] { --reveal-delay: 6; }
+
+/* Page ready — hero early reveals after loader */
+body.is-ready .hero .reveal.is-visible {
+  transition-duration: 0.9s;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about__scan,
+  .core-label,
+  .hero__scroll-line::after,
+  .pulse-dot {
+    animation: none !important;
+  }
+
+  .cursor { display: none !important; }
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: auto !important;
+  }
+
+  .loader__fill {
+    transition: none;
+  }
+
+  .modal__dialog {
+    transform: none;
+    opacity: 1;
+  }
+}
